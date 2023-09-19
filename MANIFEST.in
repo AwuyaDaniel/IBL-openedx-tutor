@@ -1,0 +1,2 @@
+recursive-include tutoribl_openedx_tutor/patches *
+recursive-include tutoribl_openedx_tutor/templates *
