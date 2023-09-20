@@ -13,16 +13,15 @@ def load_readme():
 def load_about():
     about = {}
     with io.open(
-        os.path.join(HERE, "tutoribl_openedx_tutor", "__about__.py"),
-        "rt",
-        encoding="utf-8",
+            os.path.join(HERE, "tutoribl_openedx_tutor", "__about__.py"),
+            "rt",
+            encoding="utf-8",
     ) as f:
         exec(f.read(), about)  # pylint: disable=exec-used
     return about
 
 
 ABOUT = load_about()
-
 
 setup(
     name="tutor-contrib-IBL-openedx-tutor",
@@ -41,12 +40,14 @@ setup(
     python_requires=">=3.7",
     install_requires=["tutor"],
     entry_points={
-        # "tutor.plugin.v1": [
-        #     "IBL-openedx-tutor = tutoribl_openedx_tutor.plugin"
-        # ],
+        "tutor.plugin.v1": [
+            "IBL-openedx-tutor = tutoribl_openedx_tutor.plugin"
+        ],
         "lms.djangoapp": [
             "IBL-openedx-tutor = tutoribl_openedx_tutor.apps:IblOpenedxAppConfig",
-        ]
+        ],
+        "cms.djangoapp": [
+        ],
     },
     classifiers=[
         "Development Status :: 3 - Alpha",
