@@ -41,8 +41,11 @@ setup(
     python_requires=">=3.7",
     install_requires=["tutor"],
     entry_points={
-        "tutor.plugin.v1": [
-            "IBL-openedx-tutor = tutoribl_openedx_tutor.plugin"
+        # "tutor.plugin.v1": [
+        #     "IBL-openedx-tutor = tutoribl_openedx_tutor.plugin"
+        # ],
+        "lms.djangoapp": [
+            "IBL-openedx-tutor = tutoribl_openedx_tutor.apps:IblOpenedxAppConfig",
         ]
     },
     classifiers=[
