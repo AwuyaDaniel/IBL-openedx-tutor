@@ -39,6 +39,7 @@ setup(
     include_package_data=True,
     python_requires=">=3.7",
     install_requires=["tutor"],
+    keywords="Django, Open edX, Plugin",
     entry_points={
         "tutor.plugin.v1": [
             "IBL-openedx-tutor = tutoribl_openedx_tutor.plugin"
