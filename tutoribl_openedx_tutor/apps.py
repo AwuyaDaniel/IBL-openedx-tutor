@@ -6,6 +6,7 @@ from django.apps import AppConfig
 from edx_django_utils.plugins.constants import (
     PluginURLs, PluginSettings, PluginContexts
 )
+# from openedx.core.djangoapps.plugins.constants import PluginURLs
 
 class IblOpenedxAppConfig(AppConfig):
     """
