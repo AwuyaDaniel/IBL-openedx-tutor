@@ -65,7 +65,7 @@ MY_INIT_TASKS: list[tuple[str, tuple[str, ...]]] = [
     # For example, to add LMS initialization steps, you could add the script template at:
     # tutoribl_openedx_tutor/templates/IBL-openedx-tutor/jobs/init/lms.sh
     # And then add the line:
-    ### ("lms", ("IBL-openedx-tutor", "jobs", "init", "lms.sh")),
+    # ("lms", ("IBL-openedx-tutor", "jobs", "init", "lms.sh")),
 ]
 
 
