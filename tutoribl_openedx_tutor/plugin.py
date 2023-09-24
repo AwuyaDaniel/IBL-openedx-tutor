@@ -6,6 +6,7 @@ from glob import glob
 
 import click
 import pkg_resources
+from django.conf.global_settings import INSTALLED_APPS
 from tutor import hooks
 
 from .__about__ import __version__
@@ -33,6 +34,12 @@ hooks.Filters.CONFIG_UNIQUE.add_items(
         ### ("IBL_OPENEDX_TUTOR_SECRET_KEY", "{{ 24|random_string }}"),
     ]
 )
+
+
+hooks.Filters.ENV_PATCHES.add_item(
+    INSTALLED_APPS.append('tutoribl_openedx_tutor')
+)
+
 
 hooks.Filters.CONFIG_OVERRIDES.add_items(
     [
