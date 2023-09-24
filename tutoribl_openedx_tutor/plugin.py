@@ -6,7 +6,6 @@ from glob import glob
 
 import click
 import pkg_resources
-from django.conf.global_settings import INSTALLED_APPS
 from tutor import hooks
 
 from .__about__ import __version__
@@ -37,7 +36,10 @@ hooks.Filters.CONFIG_UNIQUE.add_items(
 
 
 # hooks.Filters.ENV_PATCHES.add_item(
-#     INSTALLED_APPS.append('tutoribl_openedx_tutor')
+#     (
+#         "openedx-lms-common-settings",
+#         "INSTALLED_APPS.append('IBL-openedx-tutor')"
+#     )
 # )
 
 
