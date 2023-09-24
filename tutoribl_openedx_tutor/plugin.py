@@ -36,9 +36,9 @@ hooks.Filters.CONFIG_UNIQUE.add_items(
 )
 
 
-hooks.Filters.ENV_PATCHES.add_item(
-    INSTALLED_APPS.append('tutoribl_openedx_tutor')
-)
+# hooks.Filters.ENV_PATCHES.add_item(
+#     INSTALLED_APPS.append('tutoribl_openedx_tutor')
+# )
 
 
 hooks.Filters.CONFIG_OVERRIDES.add_items(
