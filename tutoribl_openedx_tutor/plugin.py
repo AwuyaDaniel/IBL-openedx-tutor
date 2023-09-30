@@ -34,13 +34,33 @@ hooks.Filters.CONFIG_UNIQUE.add_items(
     ]
 )
 
+# hooks.Filters.ENV_PATCHES.add_item(
+#     (
+#         "openedx-lms-common-settings",
+#         "INSTALLED_APPS.append('IBL')"
+#     )
+# )
+
+# hooks.Filters.ENV_PATCHES.add_item(
+#     (
+#         "ADDL_INSTALLED_APPS"
+#     )
+# )
 
 # hooks.Filters.ENV_PATCHES.add_item(
 #     (
 #         "openedx-lms-common-settings",
-#         "INSTALLED_APPS.append('IBL-openedx-tutor')"
+#         "URLs.append('IBL-openedx-tutor')"
 #     )
 # )
+@hooks.Actions.PLUGINS_LOADED.add()
+def add_app_to():
+    hooks.Filters.ENV_PATCHES.add_item(
+        (
+            "openedx-lms-common-settings",
+            "INSTALLED_APPS.append('IBL')"
+        )
+    )
 
 
 hooks.Filters.CONFIG_OVERRIDES.add_items(
@@ -52,7 +72,6 @@ hooks.Filters.CONFIG_OVERRIDES.add_items(
     ]
 )
 
-
 ########################################
 # INITIALIZATION TASKS
 ########################################
@@ -60,14 +79,13 @@ hooks.Filters.CONFIG_OVERRIDES.add_items(
 # To add a custom initialization task, create a bash script template under:
 # tutoribl_openedx_tutor/templates/IBL-openedx-tutor/jobs/init/
 # and then add it to the MY_INIT_TASKS list. Each task is in the format:
-# ("<service>", ("<path>", "<to>", "<script>", "<template>"))
+("<service>", ("<path>", "<to>", "<script>", "<template>"))
 MY_INIT_TASKS: list[tuple[str, tuple[str, ...]]] = [
     # For example, to add LMS initialization steps, you could add the script template at:
     # tutoribl_openedx_tutor/templates/IBL-openedx-tutor/jobs/init/lms.sh
     # And then add the line:
-    # ("lms", ("IBL-openedx-tutor", "jobs", "init", "lms.sh")),
+    ("lms", ("IBL-openedx-tutor", "jobs", "init", "lms.sh")),
 ]
-
 
 # For each task added to MY_INIT_TASKS, we load the task template
 # and add it to the CLI_DO_INIT_TASKS filter, which tells Tutor to
@@ -76,10 +94,9 @@ for service, template_path in MY_INIT_TASKS:
     full_path: str = pkg_resources.resource_filename(
         "tutoribl_openedx_tutor", os.path.join("templates", *template_path)
     )
-    with open(full_path, encoding="utf-8") as init_task_file:
-        init_task: str = init_task_file.read()
-    hooks.Filters.CLI_DO_INIT_TASKS.add_item((service, init_task))
-
+with open(full_path, encoding="utf-8") as init_task_file:
+    init_task: str = init_task_file.read()
+hooks.Filters.CLI_DO_INIT_TASKS.add_item((service, init_task))
 
 ########################################
 # DOCKER IMAGE MANAGEMENT
@@ -103,7 +120,6 @@ hooks.Filters.IMAGES_BUILD.add_items(
     ]
 )
 
-
 # Images to be pulled as part of `tutor images pull`.
 # Each item is a pair in the form:
 #     ("<tutor_image_name>", "<docker_image_tag>")
@@ -117,7 +133,6 @@ hooks.Filters.IMAGES_PULL.add_items(
     ]
 )
 
-
 # Images to be pushed as part of `tutor images push`.
 # Each item is a pair in the form:
 #     ("<tutor_image_name>", "<docker_image_tag>")
@@ -130,7 +145,6 @@ hooks.Filters.IMAGES_PUSH.add_items(
         ### ),
     ]
 )
-
 
 ########################################
 # TEMPLATE RENDERING
@@ -157,7 +171,6 @@ hooks.Filters.ENV_TEMPLATE_TARGETS.add_items(
     ],
 )
 
-
 ########################################
 # PATCH LOADING
 # (It is safe & recommended to leave
@@ -167,14 +180,13 @@ hooks.Filters.ENV_TEMPLATE_TARGETS.add_items(
 # For each file in tutoribl_openedx_tutor/patches,
 # apply a patch based on the file's name and contents.
 for path in glob(
-    os.path.join(
-        pkg_resources.resource_filename("tutoribl_openedx_tutor", "patches"),
-        "*",
-    )
+        os.path.join(
+            pkg_resources.resource_filename("tutoribl_openedx_tutor", "patches"),
+            "*",
+        )
 ):
-    with open(path, encoding="utf-8") as patch_file:
-        hooks.Filters.ENV_PATCHES.add_item((os.path.basename(path), patch_file.read()))
-
+    with open(path, encoding="utf-8") as patch_file: \
+    hooks.Filters.ENV_PATCHES.add_item((os.path.basename(path), patch_file.read()))
 
 ########################################
 # CUSTOM JOBS (a.k.a. "do-commands")
@@ -199,13 +211,11 @@ for path in glob(
 ###         ("cms", f"echo 'Hello from CMS, {name}!'"),
 ###     ]
 
-
 # Then, add the command function to CLI_DO_COMMANDS:
 ## hooks.Filters.CLI_DO_COMMANDS.add_item(say_hi)
 
 # Now, you can run your job like this:
 #   $ tutor local do say-hi --name="Awuya Daniel"
-
 
 #######################################
 # CUSTOM CLI COMMANDS
@@ -218,17 +228,13 @@ for path in glob(
 # To define a command group for your plugin, you would define a Click
 # group and then add it to CLI_COMMANDS:
 
-
 ### @click.group()
 ### def IBL-openedx-tutor() -> None:
 ###     pass
 
-
 ### hooks.Filters.CLI_COMMANDS.add_item(IBL-openedx-tutor)
 
-
 # Then, you would add subcommands directly to the Click group, for example:
-
 
 ### @IBL-openedx-tutor.command()
 ### def example_command() -> None:
@@ -236,7 +242,6 @@ for path in glob(
 ###     This is helptext for an example command.
 ###     """
 ###     print("You've run an example command.")
-
 
 # This would allow you to run:
 #   $ tutor IBL-openedx-tutor example-command

@@ -2,7 +2,6 @@
 Database models for IBL_openedx_app.
 """
 # from django.db import models
-from model_utils.models import TimeStampedModel
 from django.db import models
 from django.contrib.auth.models import User
 from django.utils import timezone
