@@ -94,9 +94,9 @@ for service, template_path in MY_INIT_TASKS:
     full_path: str = pkg_resources.resource_filename(
         "tutoribl_openedx_tutor", os.path.join("templates", *template_path)
     )
-with open(full_path, encoding="utf-8") as init_task_file:
-    init_task: str = init_task_file.read()
-hooks.Filters.CLI_DO_INIT_TASKS.add_item((service, init_task))
+    with open(full_path, encoding="utf-8") as init_task_file:
+        init_task: str = init_task_file.read()
+    hooks.Filters.CLI_DO_INIT_TASKS.add_item((service, init_task))
 
 ########################################
 # DOCKER IMAGE MANAGEMENT
