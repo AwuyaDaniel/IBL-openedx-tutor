@@ -20,7 +20,13 @@ cp -r "$DESTINATION_DIR/IBL" "$DESTINATION_DIR/lms/djangoapps"
 
 # Navigate to the edx-platform directory
 cd "$DESTINATION_DIR"
-
+#
 # Run the following commands
+#python manage.py lms makemigrations
+#python manage.py lms migrate
+cd ..
+source venv/bin/activate
+pip install git+https://github.com/AwuyaDaniel/IBL-openedx-tutor.git
+cd "$DESTINATION_DIR"
 python manage.py lms makemigrations
 python manage.py lms migrate
