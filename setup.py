@@ -45,7 +45,7 @@ setup(
             "IBL-openedx-tutor = tutoribl_openedx_tutor.plugin"
         ],
         "lms.djangoapp": [
-            "IBL-openedx-tutor = tutoribl_openedx_tutor.apps:IblOpenedxAppConfig",
+            "tutoribl_openedx_tutor = tutoribl_openedx_tutor.apps:IblOpenedxAppConfig",
         ],
         "cms.djangoapp": [
         ],

@@ -15,7 +15,7 @@ class IblOpenedxAppConfig(AppConfig):
 
 #     name = 'IBL_openedx_app'
 # class MyAppConfig(AppConfig):
-    name = 'IBL_openedx_app'
+    name = 'tutoribl_openedx_tutor'
 
     # Class attribute that configures and enables this app as a Plugin App.
     plugin_app = {
@@ -30,7 +30,7 @@ class IblOpenedxAppConfig(AppConfig):
             'lms.djangoapp': {
 
                 # The namespace to provide to django's urls.include.
-                PluginURLs.NAMESPACE: 'IBL_openedx_app',
+                PluginURLs.NAMESPACE: 'tutoribl_openedx_tutor',
 
                 # The application namespace to provide to django's urls.include.
                 # Optional; Defaults to None.
@@ -38,7 +38,7 @@ class IblOpenedxAppConfig(AppConfig):
 
                 # The regex to provide to django's urls.url.
                 # Optional; Defaults to r''.
-                PluginURLs.REGEX: r'^api/IBL_openedx_app/',
+                PluginURLs.REGEX: r'^api/tutoribl_openedx_tutor/',
 
                 # The python path (relative to this app) to the URLs module to be plugged into the project.
                 # Optional; Defaults to 'urls'.
