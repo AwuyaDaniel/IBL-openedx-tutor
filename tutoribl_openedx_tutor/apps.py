@@ -30,7 +30,7 @@ class IblOpenedxAppConfig(AppConfig):
             'lms.djangoapp': {
 
                 # The namespace to provide to django's urls.include.
-                PluginURLs.NAMESPACE: 'tutoribl_openedx_tutor',
+                PluginURLs.NAMESPACE: 'IBL_Openedx',
 
                 # The application namespace to provide to django's urls.include.
                 # Optional; Defaults to None.
