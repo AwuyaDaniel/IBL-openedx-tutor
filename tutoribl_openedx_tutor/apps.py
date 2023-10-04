@@ -60,10 +60,10 @@ class IblOpenedxAppConfig(AppConfig):
 
                     # The python path (relative to this app) to the settings module for the relevant Project Type and Settings Type.
                     # Optional; Defaults to 'settings'.
-                    PluginSettings.RELATIVE_PATH: 'settings.production',
+                    PluginSettings.RELATIVE_PATH: 'tutoribl_openedx_tutor.settings.production',
                 },
                 'common': {
-                    PluginSettings.RELATIVE_PATH: 'settings.common',
+                    PluginSettings.RELATIVE_PATH: 'tutoribl_openedx_tutor.settings.common',
                 },
             }
         },
