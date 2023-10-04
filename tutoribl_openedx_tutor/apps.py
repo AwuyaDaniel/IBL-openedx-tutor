@@ -33,7 +33,7 @@ class IblOpenedxAppConfig(AppConfig):
         PluginURLs.CONFIG: {
             ProjectType.CMS: {
                 PluginURLs.NAMESPACE: name,
-                PluginURLs.REGEX: "^IBL/lms/",
+                PluginURLs.REGEX: "^tutoribl_openedx_tutor/lms/",
                 PluginURLs.RELATIVE_PATH: "urls",
             }
         },
