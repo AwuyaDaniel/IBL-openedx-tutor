@@ -24,7 +24,7 @@ def load_about():
 ABOUT = load_about()
 
 setup(
-    name="tutor-contrib-IBL-openedx-tutor",
+    name="tutoribl_openedx_tutor",
     version=ABOUT["__version__"],
     url="https://github.com/AwuyaDaniel/IBL-openedx-tutor.git",
     project_urls={
