@@ -20,7 +20,7 @@ class IblOpenedxAppConfig(AppConfig):
     """
     default_auto_field = "django.db.models.BigAutoField"
 
-    name = 'IBL_openedx_app'
+    name = 'tutoribl_openedx_tutor'
     plugin_app = {
         # mcdaniel oct-2021
         # this is how you inject a python list of urls into lms.urls.py
