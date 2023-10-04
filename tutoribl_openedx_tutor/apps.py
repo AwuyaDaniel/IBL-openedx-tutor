@@ -11,7 +11,7 @@ from openedx.core.djangoapps.plugins.constants import (
 )
 # from openedx.core.djangoapps.plugins.constants import PluginURLs
 
-class IblOpenedxAppConfig(AppConfig):
+class TutoriblOpenedxTutorAppConfig(AppConfig):
     """
     Configuration for the IBL_openedx_app Django application.
     """
