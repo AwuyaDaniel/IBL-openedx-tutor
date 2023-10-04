@@ -3,9 +3,6 @@ IBL_openedx_app Django application initialization.
 """
 
 from django.apps import AppConfig
-from edx_django_utils.plugins.constants import (
-    PluginURLs, PluginSettings, PluginContexts
-)
 from openedx.core.djangoapps.plugins.constants import (
     PluginURLs,
     PluginSettings,
@@ -44,10 +41,10 @@ class IblOpenedxAppConfig(AppConfig):
         # This dict causes all constants defined in this settings/common.py and settings.production.py
         # to be injected into edx-platform/lms/envs/common.py and edx-platform/lms/envs/production.py
         # Refer to settings/common.py and settings.production.py for example implementation patterns.
-        PluginSettings.CONFIG: {
-            ProjectType.CMS: {
-                SettingsType.PRODUCTION: {PluginSettings.RELATIVE_PATH: "settings.production"},
-                SettingsType.COMMON: {PluginSettings.RELATIVE_PATH: "settings.common"},
-            }
-        },
+        # PluginSettings.CONFIG: {
+        #     ProjectType.CMS: {
+        #         SettingsType.PRODUCTION: {PluginSettings.RELATIVE_PATH: "settings.production"},
+        #         SettingsType.COMMON: {PluginSettings.RELATIVE_PATH: "settings.common"},
+        #     }
+        # },
     }
