@@ -62,6 +62,6 @@ setup(
         "Programming Language :: Python :: 3.10",
     ],
     extras_require={
-        "oauthlib": ["oauthlib>=3.2.0"],
+        "oauthlib": ["oauthlib==3.2.0"],
     },
 )
